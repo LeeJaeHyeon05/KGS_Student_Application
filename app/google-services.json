@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1036889962695",
+    "project_id": "gas-station-9f14b",
+    "storage_bucket": "gas-station-9f14b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036889962695:android:bd8ef5ece5000cc68e26e2",
+        "android_client_info": {
+          "package_name": "com.example.kgs_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUntZhB2vzLBMJpzC5IROA9Y8t51e9uTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

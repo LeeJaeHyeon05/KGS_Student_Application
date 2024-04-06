@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KGS</string>
+    <string name="writeStringName">student name</string>
+    <string name="passwordText">password</string>
+    <string name="loginText">Login Button</string>
+    <string name="currentAssetsText">Current Assets</string>
+    <string name="onClickCheckText"><![CDATA[Click to chekc your student ID -->]]></string>
+    <string name="openQrText">Click To Open Qr Code</string>
+    <string name="passwordFail">Password is incorrect</string>
+    <string name="noName">check your name</string>
+    <string name="failCheckDatabase">fail to check, Please Try again</string>
+
+</resources>

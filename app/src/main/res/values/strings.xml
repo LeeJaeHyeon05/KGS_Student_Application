@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">한국글로벌학교</string>
+    <string name="writeStringName">학생이름을 적어주세요</string>
+    <string name="passwordText">비밀번호</string>
+    <string name="loginText">로그인하기</string>
+    <string name="currentAssetsText">현재 잔고</string>
+    <string name="onClickCheckText"><![CDATA[눌러서 학생증 확인하러 가기 —>]]></string>
+    <string name="openQrText">매점 구매를 위한 QR코드 바로 열기</string>
+    <string name="passwordFail">비밀번호가 올바르지 않습니다</string>
+    <string name="noName">해당하는 이름의 계정이 없습니다</string>
+    <string name="failCheckDatabase">데이터베이스 조회 실패, 다시 실행해주세요</string>
+</resources>
