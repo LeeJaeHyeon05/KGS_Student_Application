@@ -3,10 +3,14 @@ package com.example.kgs_app
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.kgs_app.databinding.ActivityMainBinding
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import java.util.Timer
+import java.util.TimerTask
+import java.util.logging.Handler
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,9 +24,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val receivedName = intent.getStringExtra("student-name")
-        binding.welcomeTextView.text = "안녕하세요! ${receivedName}님 \n아래를 눌러서 학생증을 확인해 보세요"
+        binding.welcomeTextView.text = "안녕하세요! ${receivedName}님"
 
         getData(receivedName)
+
+        val viewpager = binding.viewpager
+        viewpager.adapter = ViewPagerAdapter(getAespaMembers()) // 어댑터 생성
+        viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
+
+    }
+    private fun getAespaMembers(): ArrayList<Int> {
+        return arrayListOf<Int>(
+            R.drawable.ptwo,
+            R.drawable.pthree,
+            R.drawable.pfour,
+            R.drawable.pfive)
     }
 
     private fun getData(receivedName: String?) {

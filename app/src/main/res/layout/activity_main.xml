@@ -7,32 +7,56 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/toolLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:src="@drawable/kgs_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/studentCard"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolLogo">
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/kgslogo"
+                android:layout_width="205dp"
+                android:layout_height="60dp"
+                android:background="@drawable/kgs_logo"
+                app:layout_constraintEnd_toStartOf="@+id/camlogo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/camlogo"
+                android:layout_width="205dp"
+                android:layout_height="60dp"
+                android:background="@drawable/camlogo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/kgslogo"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kgslogo"
+
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/mainCardView"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_width="370dp"
+        android:layout_height="220dp"
         android:layout_marginTop="10dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
@@ -78,22 +102,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="안녕하세요! 홍길동님 \n아래를 눌러서 학생증을 확인해 보세요"
+                android:text="안녕하세요, 홍길동님"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/splitView" />
 
-            <TextView
-                android:id="@+id/studentIdEnterTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/onClickCheckText"
-                android:textSize="15sp"
+            <com.ncorti.slidetoact.SlideToActView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:area_margin="5dp"
+                app:icon_margin="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
+                app:outer_color="@color/slidetoact_defaultAccent"
+                app:text="아래를 당겨서 학생증 보기!"
+                app:text_size="17dp"
+                app:text_style="italic" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,7 +130,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/qrCardView"
-        android:layout_width="350dp"
+        android:layout_width="370dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="20dp"
@@ -118,24 +146,26 @@
 
             <ImageView
                 android:id="@+id/qrImageView"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-
+                android:src="@drawable/qrpic"
                 />
 
-            <TextView
-                android:id="@+id/qrDescriptionTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/openQrText"
-                android:textColor="@color/black"
-                android:textSize="15sp"
+            <com.ncorti.slidetoact.SlideToActView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                app:area_margin="5dp"
+                app:icon_margin="6dp"
                 app:layout_constraintBottom_toBottomOf="@+id/qrImageView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/qrImageView"
-                app:layout_constraintTop_toTopOf="@+id/qrImageView" />
+                app:layout_constraintTop_toTopOf="@+id/qrImageView"
+                app:text="@string/openQrText"
+                app:text_size="15dp"
+                app:text_style="italic" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
