@@ -130,7 +130,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/qrCardView"
+        android:id="@+id/menuCardView"
         android:layout_width="370dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
@@ -146,24 +146,24 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/qrImageView"
+                android:id="@+id/menuImageView"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:src="@drawable/store"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/qrpic"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.ncorti.slidetoact.SlideToActView
+                android:id="@+id/slideToMenu"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 app:area_margin="5dp"
                 app:icon_margin="6dp"
-                app:layout_constraintBottom_toBottomOf="@+id/qrImageView"
+                app:layout_constraintBottom_toBottomOf="@+id/menuImageView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/qrImageView"
-                app:layout_constraintTop_toTopOf="@+id/qrImageView"
+                app:layout_constraintStart_toEndOf="@+id/menuImageView"
+                app:layout_constraintTop_toTopOf="@+id/menuImageView"
                 app:text="@string/openQrText"
                 app:text_size="15dp"
                 app:text_style="italic" />
@@ -173,27 +173,72 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/noticeCard"
-        android:layout_width="170dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="8dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintStart_toStartOf="@+id/qrCardView"
-        app:layout_constraintTop_toBottomOf="@+id/qrCardView"
-        app:layout_constraintEnd_toStartOf="@+id/emergencyCard"
-        />
-
-    <androidx.cardview.widget.CardView
         android:id="@+id/emergencyCard"
         android:layout_width="170dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
-        app:layout_constraintStart_toEndOf="@+id/noticeCard"
-        app:layout_constraintEnd_toEndOf="@+id/qrCardView"
-        app:layout_constraintTop_toBottomOf="@+id/qrCardView" />
+        app:layout_constraintEnd_toStartOf="@+id/orderControlCard"
+        app:layout_constraintStart_toStartOf="@+id/menuCardView"
+        app:layout_constraintTop_toBottomOf="@+id/menuCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/sirenImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/siren"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:text="비상연락망"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/sirenImage"
+                app:layout_constraintBottom_toBottomOf="@+id/sirenImage"
+                app:layout_constraintTop_toTopOf="@+id/sirenImage"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/orderControlCard"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/menuCardView"
+        app:layout_constraintStart_toEndOf="@+id/emergencyCard"
+        app:layout_constraintTop_toBottomOf="@+id/menuCardView">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.3"
+            android:src="@drawable/kgs_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quản lý đơn hàng"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

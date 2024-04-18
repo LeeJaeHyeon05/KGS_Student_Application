@@ -1,10 +1,14 @@
 package com.example.kgs_app
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
 import com.example.kgs_app.databinding.ActivityMainBinding
 import com.google.firebase.Firebase
@@ -32,9 +36,35 @@ class MainActivity : AppCompatActivity() {
         getData(receivedName)
         //뷰페이저 함수
         mainViewPager()
-       // 커스텀 다이얼로그 함수
-        popDialog()
+        // 커스텀 다이얼로그 함수
+        popDialog(receivedName)
+        // 메뉴 다이얼로그 함수
+        menuDialog(receivedName)
+        //매점 아주머니 전용
+        binding.orderControlCard.setOnClickListener {
+            showAlertDialogWithEditText(context = this)
+        }
+        binding.emergencyCard.setOnClickListener {
+            startActivity(Intent(this, TeachersActivity::class.java))
+        }
 
+    }
+    private fun showAlertDialogWithEditText(context: Context) {
+        val builder = AlertDialog.Builder(context)
+        val editText = EditText(context)
+
+        builder.setTitle("Enter something")
+        builder.setView(editText)
+        builder.setPositiveButton("OK") { dialog, which ->
+            val userInput = editText.text.toString()
+            if (userInput == "123") {
+                dialog.dismiss()
+                Toast.makeText(this, "thành công", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ControlActivity::class.java))
+            }
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
     private fun setWelcomeText(receivedName: String?) {
         receivedName?.let {
@@ -54,13 +84,24 @@ class MainActivity : AppCompatActivity() {
                 }
         }
     }
-    private fun popDialog() {
+    private fun popDialog(receivedName: String?) {
         val slideCard = binding.slideToCard
         slideCard.onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
             override fun onSlideComplete(view: SlideToActView) {
                 val dialog = DialogActivity(this@MainActivity)
-                dialog.myDia()
+                dialog.myDia(receivedName)
                 slideCard.setCompleted(completed = false, withAnimation = true)
+            }
+        }
+    }
+    private fun menuDialog(receivedName: String?) {
+        //메뉴
+        val slideMenu = binding.slideToMenu
+        slideMenu.onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
+            override fun onSlideComplete(view: SlideToActView) {
+                val dialog = MenuDialogActivity(this@MainActivity)
+                dialog.menuDia(receivedName)
+                slideMenu.setCompleted(completed = false, withAnimation = true)
             }
         }
     }

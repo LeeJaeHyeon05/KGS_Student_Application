@@ -6,7 +6,7 @@
     <string name="loginText">Login Button</string>
     <string name="currentAssetsText">Current Assets</string>
     <string name="onClickCheckText"><![CDATA[Pull to chekc your student ID -->]]></string>
-    <string name="openQrText">Click To Open Qr Code</string>
+    <string name="openQrText">Click To Open menu</string>
     <string name="passwordFail">Password is incorrect</string>
     <string name="noName">check your name</string>
     <string name="failCheckDatabase">fail to check, Please Try again</string>

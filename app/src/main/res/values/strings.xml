@@ -5,8 +5,10 @@
     <string name="loginText">로그인하기</string>
     <string name="currentAssetsText">현재 잔고</string>
     <string name="onClickCheckText"><![CDATA[땡겨서 학생증 확인하러 가기 —>]]></string>
-    <string name="openQrText">매점 구매용QR코드 열기</string>
+    <string name="openQrText">매점 메뉴판 열기</string>
     <string name="passwordFail">비밀번호가 올바르지 않습니다</string>
     <string name="noName">해당하는 이름의 계정이 없습니다</string>
     <string name="failCheckDatabase">데이터베이스 조회 실패, 다시 실행해주세요</string>
+    <string name="kgsHCM" translatable="false"><b>KGS 호치민시</b> ( Korea Global School)\n전화번호 : (+84) 28 2222 5959\n메일 : kgsinhcm@gmail.com\n주소 : 480D Nguyễn Thị Thập, phường Tân Quy, Quận 7, Tp. HCM</string>
+    <string name="kgsHanoi" translatable="false"><b>KGS 하노이</b> ( Korea Global School)\n전화번호 : (+84) 24 3201 3131\n메일 : kgshanoi@kgs.edu.vn\n주소 : Số 1 Trịnh Văn Bô, Phương Canh, Quận Nam Từ Liêm, Hà Nội</string>
 </resources>

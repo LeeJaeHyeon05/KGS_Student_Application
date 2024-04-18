@@ -6,7 +6,7 @@
     <string name="loginText">로그인 하기</string>
     <string name="currentAssetsText">현재 잔고</string>
     <string name="onClickCheckText"><![CDATA[땡겨서 학생증 확인하러 가기 —>]]></string>
-    <string name="openQrText">매점 구매용QR코드 열기</string>
+    <string name="openQrText">매점 메뉴판 열기</string>
     <string name="passwordFail">비밀번호가 올바르지 않습니다</string>
     <string name="noName">해당하는 이름의 계정이 없습니다</string>
     <string name="failCheckDatabase">데이터베이스 조회 실패, 다시 실행해주세요</string>
