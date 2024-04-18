@@ -1,7 +1,6 @@
-package com.example.kgs_app
+package com.example.kgs_app.activities
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +9,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
+import com.example.kgs_app.R
+import com.example.kgs_app.adapter.ViewPagerAdapter
 import com.example.kgs_app.databinding.ActivityMainBinding
+import com.example.kgs_app.dialog.DialogActivity
+import com.example.kgs_app.dialog.MenuDialogActivity
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.ncorti.slidetoact.SlideToActView
@@ -47,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, TeachersActivity::class.java))
         }
 
+
+
     }
     private fun orderControl() {
         binding.orderControlCard.setOnClickListener {
@@ -59,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         val editText = EditText(context)
 
-        builder.setTitle("Enter something")
+        builder.setTitle("PASSWORD")
         builder.setView(editText)
         builder.setPositiveButton("OK") { dialog, which ->
             val userInput = editText.text.toString()

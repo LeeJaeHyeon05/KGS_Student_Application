@@ -1,15 +1,14 @@
-package com.example.kgs_app
+package com.example.kgs_app.activities
 
 import android.content.Intent
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.Toast
+import com.example.kgs_app.R
 import com.example.kgs_app.databinding.ActivityLoginBinding
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.Locale
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         // 로그인 함수
         checkLogin()
         binding.testBtn.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
     }

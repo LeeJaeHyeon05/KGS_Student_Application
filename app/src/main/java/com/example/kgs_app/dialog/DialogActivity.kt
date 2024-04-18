@@ -1,13 +1,11 @@
-package com.example.kgs_app
+package com.example.kgs_app.dialog
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.kgs_app.R
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 

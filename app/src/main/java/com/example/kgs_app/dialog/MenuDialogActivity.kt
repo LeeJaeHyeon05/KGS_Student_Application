@@ -1,14 +1,13 @@
-package com.example.kgs_app
+package com.example.kgs_app.dialog
 
 import android.app.Dialog
 import android.content.Context
-import android.util.Log
-import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import com.example.kgs_app.R
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.firestore
