@@ -199,15 +199,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:text="비상연락망"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/sirenImage"
-                app:layout_constraintBottom_toBottomOf="@+id/sirenImage"
-                app:layout_constraintTop_toTopOf="@+id/sirenImage"
-                android:textStyle="bold"
+                android:text="비상연락망"
                 android:textSize="17sp"
-                />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/sirenImage"
+                app:layout_constraintStart_toEndOf="@+id/sirenImage"
+                app:layout_constraintTop_toTopOf="@+id/sirenImage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -224,20 +223,35 @@
         app:layout_constraintStart_toEndOf="@+id/emergencyCard"
         app:layout_constraintTop_toBottomOf="@+id/menuCardView">
 
-        <ImageView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.3"
-            android:src="@drawable/kgs_logo" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quản lý đơn hàng"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.3"
+                android:src="@drawable/kgs_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quản lý đơn hàng\n매점 관리"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.cardview.widget.CardView>
 

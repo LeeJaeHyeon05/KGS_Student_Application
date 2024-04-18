@@ -41,14 +41,20 @@ class MainActivity : AppCompatActivity() {
         // 메뉴 다이얼로그 함수
         menuDialog(receivedName)
         //매점 아주머니 전용
-        binding.orderControlCard.setOnClickListener {
-            showAlertDialogWithEditText(context = this)
-        }
+        orderControl()
+        // 선생님 연락
         binding.emergencyCard.setOnClickListener {
             startActivity(Intent(this, TeachersActivity::class.java))
         }
 
     }
+    private fun orderControl() {
+        binding.orderControlCard.setOnClickListener {
+            showAlertDialogWithEditText(context = this)
+        }
+
+    }
+    // alert 띄우기 / 비번확인
     private fun showAlertDialogWithEditText(context: Context) {
         val builder = AlertDialog.Builder(context)
         val editText = EditText(context)
