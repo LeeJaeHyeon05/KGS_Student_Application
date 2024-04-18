@@ -20,6 +20,8 @@ class ViewPagerAdapter(var photos: ArrayList<Int>) :
     override fun getItemCount(): Int = photos.size
 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
-        holder.photos.setImageResource(photos[position])
+        //setImage로 하면 화질이 안 깨지는 반면 사이즈  옆에 공백 하지만 setBackground 하면 사이즈가 이상해지지만 공백 사라짐
+//      holder.photos.setImageResource(photos[position])
+        holder.photos.setBackgroundResource(photos[position])
     }
 }

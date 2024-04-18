@@ -21,10 +21,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        //로그인 애니메이션 함수
         loginAnimation()
+        // 로그인 함수
         checkLogin()
-
+        binding.testBtn.setOnClickListener {
+            startActivity(Intent(this,MainActivity::class.java))
+        }
 
     }
     //로그인 코드
