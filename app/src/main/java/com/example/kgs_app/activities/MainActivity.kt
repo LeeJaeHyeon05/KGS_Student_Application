@@ -43,39 +43,50 @@ class MainActivity : AppCompatActivity() {
         popDialog(receivedName)
         // 메뉴 다이얼로그 함수
         menuDialog(receivedName)
-        //매점 아주머니 전용
+        //오더 현황 보기
         orderControl()
         // 선생님 연락
         binding.emergencyCard.setOnClickListener {
             startActivity(Intent(this, TeachersActivity::class.java))
         }
+        // 메인 assets 값 가지고 오기
+        val docRef = receivedName?.let { db.collection("student").document(it) }
+        docRef?.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                return@addSnapshotListener
+            }
 
+            if (snapshot != null && snapshot.exists()) {
+                val asset = snapshot.data!!["assets"].toString()
+                binding.BalanceNumberTextView.text = addCommasToNumber(asset)
+            }
+        }
 
+    }
+    private fun addCommasToNumber(number: Any?): String {
+        // 숫자를 문자열로 변환
+        var numberString = number.toString()
 
+        // 천 단위마다 쉼표 추가
+        val stringBuilder = StringBuilder()
+        var count = 0
+        for (i in numberString.length - 1 downTo 0) {
+            stringBuilder.append(numberString[i])
+            count++
+            if (count == 3 && i != 0) {
+                stringBuilder.append(",")
+                count = 0
+            }
+        }
+
+        // 거꾸로 된 문자열을 다시 뒤집어서 원래 순서로 되돌리기
+        return stringBuilder.reverse().toString()
     }
     private fun orderControl() {
         binding.orderControlCard.setOnClickListener {
-            showAlertDialogWithEditText(context = this)
-        }
 
-    }
-    // alert 띄우기 / 비번확인
-    private fun showAlertDialogWithEditText(context: Context) {
-        val builder = AlertDialog.Builder(context)
-        val editText = EditText(context)
-
-        builder.setTitle("PASSWORD")
-        builder.setView(editText)
-        builder.setPositiveButton("OK") { dialog, which ->
-            val userInput = editText.text.toString()
-            if (userInput == "123") {
-                dialog.dismiss()
-                Toast.makeText(this, "thành công", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, ControlActivity::class.java))
-            }
+            startActivity(Intent(this, ControlActivity::class.java))
         }
-        val dialog = builder.create()
-        dialog.show()
     }
     private fun setWelcomeText(receivedName: String?) {
         receivedName?.let {

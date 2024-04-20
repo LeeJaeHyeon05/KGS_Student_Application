@@ -24,9 +24,9 @@ class LoginActivity : AppCompatActivity() {
         loginAnimation()
         // 로그인 함수
         checkLogin()
-        binding.testBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
+//        binding.testBtn.setOnClickListener {
+//            startActivity(Intent(this, MainActivity::class.java))
+//        }
 
     }
     //로그인 코드
