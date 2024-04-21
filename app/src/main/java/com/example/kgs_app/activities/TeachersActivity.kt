@@ -69,17 +69,13 @@ class TeachersActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CALL_PHONE_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // 사용자가 전화 걸기 권한을 허용한 경우
                 setItemClickListener()
-            } else {
-                // 사용자가 전화 걸기 권한을 거부한 경우
-                // 권한이 필요한 이유를 사용자에게 설명하고 다른 작업 수행
             }
         }
     }
 
     // RecyclerView 아이템 클릭 리스너 설정
-    private fun setItemClickListener() {
+       private fun setItemClickListener() {
         listAdapter.setItemClickListener(object : TeacherRecyclerAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val intent = Intent(Intent.ACTION_CALL)

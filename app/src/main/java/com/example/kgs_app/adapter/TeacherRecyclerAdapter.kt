@@ -11,7 +11,6 @@ import com.example.kgs_app.R
 import com.example.kgs_app.data.TeacherData
 
 class TeacherRecyclerAdapter(private val itemList: ArrayList<TeacherData>): RecyclerView.Adapter<TeacherRecyclerAdapter.ViewHolder>() {
-    // (1) 아이템 레이아웃과 결합
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_teacher, parent, false)
         return ViewHolder(view)
@@ -31,14 +30,11 @@ class TeacherRecyclerAdapter(private val itemList: ArrayList<TeacherData>): Recy
         val number: TextView = itemView.findViewById(R.id.number)
     }
 
-    // (2) 리스너 인터페이스
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
     }
-    // (3) 외부에서 클릭 시 이벤트 설정
     fun setItemClickListener(onItemClickListener: OnItemClickListener) {
         this.itemClickListener = onItemClickListener
     }
-    // (4) setItemClickListener로 설정한 함수 실행
     private lateinit var itemClickListener : OnItemClickListener
 }

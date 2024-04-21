@@ -3,13 +3,17 @@ package com.example.kgs_app.dialog
 import android.app.Dialog
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
+import android.service.controls.Control
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import com.example.kgs_app.R
+import com.example.kgs_app.activities.ControlActivity
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -38,10 +42,7 @@ class MenuDialogActivity (context: Context) {
     fun menuDia(receivedName: String?) {
         menuDialog.show()
         menuDialog.setContentView(R.layout.activity_menu)
-        menuDialog.window!!.setLayout(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
-        )
+        menuDialog.window!!.setLayout( WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
         menuDialog.setCanceledOnTouchOutside(true)
         menuDialog.setCancelable(true)
 
@@ -81,6 +82,10 @@ class MenuDialogActivity (context: Context) {
 
             val docName = formattedDate+getInfo+formattedTime
 
+            // 클릭된 뷰의 context를 가져와서 사용
+            val context = it.context
+
+            context.startActivity(Intent(context, ControlActivity::class.java))
             val isCompleted = false
 
             val docRef = hashMapOf(
@@ -92,46 +97,46 @@ class MenuDialogActivity (context: Context) {
                 "date" to formattedDate
             )
 
-            db.collection("order").document(docName)
-                .set(docRef, SetOptions.merge())
-                .addOnSuccessListener { documentReference ->
-                    menuDialog.dismiss()
-                    Toast.makeText(it.context, "총 ${chocoCount+strawCount}개의 주문이 완료되었습니다", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener { e ->
-                }
+
 
             val dataRef = receivedName?.let { it1 -> db.collection("student").document(it1) }
 
             dataRef?.get()
                 ?.addOnSuccessListener { document ->
-                    if (document.exists()) { // 문서가 존재하는지 확인
-                        // 필드에서 값을 가져옴
+                    if (document.exists()) {
                         val assets = document.getLong("assets") ?: 0
-
-                        // 계산 수행
                         val newAssets = assets - (chocoCount * 30000 + strawCount * 30000)
 
-                        // 새로운 값으로 업데이트
-                        dataRef.update("assets", newAssets)
-                            .addOnSuccessListener {
-                                // 업데이트 성공
-                                println("Document successfully updated!")
-                            }
-                            .addOnFailureListener { e ->
-                                // 업데이트 실패
-                                println("Error updating document: $e")
-                            }
-                    } else {
-                        // 문서가 없음
-                        println("No such document")
+                        // 만약 newAssets가 0 이하이면 Firestore 문서를 업데이트하지 않고 다이얼로그를 닫음
+                        if (newAssets <= 0) {
+                            menuDialog.dismiss()
+                            Toast.makeText(it.context, "돈이 없습니다", Toast.LENGTH_SHORT).show()
+                        } else {
+                            db.collection("order").document(docName)
+                                .set(docRef, SetOptions.merge())
+                                .addOnSuccessListener { documentReference ->
+                                    menuDialog.dismiss()
+                                    Toast.makeText(it.context, "총 ${chocoCount+strawCount}개의 주문이 완료되었습니다\n새로고침 버튼을 눌러주세요", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener { e ->
+                                }
+                            dataRef.update("assets", newAssets)
+                                .addOnSuccessListener {
+                                    // 업데이트 성공
+                                }
+                                .addOnFailureListener { e ->
+                                    // 실패 처리
+                                }
+                        }
                     }
                 }
                 ?.addOnFailureListener { exception ->
+                    // 실패 처리
                 }
+
+
         }
     }
-
     private fun updateOrderButtonText(orderBtn: Button) {
         val totalCount = chocoCount + strawCount
         // 총 만동의 가격 계산
@@ -141,17 +146,4 @@ class MenuDialogActivity (context: Context) {
         orderBtn.text = "총: ${priceText}만동, 주문 (${totalCount})"
 
     }
-
-//    private fun onRoading(userInfo: String) {
-//        menuDialog.show()
-//        menuDialog.setContentView(R.layout.activity_cooking)
-//        menuDialog.window!!.setLayout(
-//            WindowManager.LayoutParams.MATCH_PARENT,
-//            WindowManager.LayoutParams.WRAP_CONTENT
-//        )
-//        menuDialog.setCanceledOnTouchOutside(false)
-//        menuDialog.setCancelable(false)
-//
-//
-//    }
 }

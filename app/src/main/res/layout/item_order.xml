@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="130dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,26 +55,25 @@
                 android:text="주문시간 : 12시30분"
                 android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="@+id/loadingText"
-                app:layout_constraintTop_toBottomOf="@+id/orderName"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/orderName" />
 
             <TextView
                 android:id="@+id/orderDate"
-                android:text="주문날짜 : 20240402"
-                android:textSize="17sp"
-                app:layout_constraintTop_toBottomOf="@+id/orderTime"
-                app:layout_constraintStart_toStartOf="@+id/orderTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/finishButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/loadingText"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="finsih"
-                />
+                android:text="주문날짜 : 20240402"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="@+id/orderTime"
+                app:layout_constraintTop_toBottomOf="@+id/orderTime" />
 
+            <TextView
+                android:id="@+id/orderCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="초코: 1개, 딸기 2개"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="@+id/orderTime"
+                app:layout_constraintTop_toBottomOf="@+id/orderDate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

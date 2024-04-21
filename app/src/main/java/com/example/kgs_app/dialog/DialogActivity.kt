@@ -20,7 +20,7 @@ class DialogActivity(context: Context) {
         // 크기 설정
         dialog.setCanceledOnTouchOutside(true)
         dialog.setCancelable(true)
-        // ##
+
         val getInfo = receivedName
         val db = Firebase.firestore
         // 불러오기
